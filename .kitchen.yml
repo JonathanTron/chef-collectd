@@ -1,0 +1,30 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  require_chef_omnibus: latest
+
+platforms:
+  - name: debian-7.6
+    run_list:
+      - recipe[apt]
+  - name: ubuntu-14.04
+    run_list:
+      - recipe[apt]
+
+suites:
+  - name: default
+    run_list:
+      - recipe[collectd_test]
+    attributes:
+
+  - name: collectd_python
+    run_list:
+      - recipe[collectd_python]
+
+  - name: collectd_custom
+    run_list:
+      - recipe[collectd_test::custom_fake_lwrp]
+      - recipe[collectd_test::redefine]

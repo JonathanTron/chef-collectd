@@ -1,0 +1,7 @@
+DEPENDENCIES
+  collectd
+    path: .
+    metadata: true
+
+GRAPH
+  collectd (2.1.1)
